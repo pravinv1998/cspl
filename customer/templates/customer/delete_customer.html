@@ -1,0 +1,31 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}Delete Customers
+{% endblock title %}
+
+
+{% block body %}
+  
+
+   <div class="card w-75 mt-5">
+       <div class="card-body header-color">
+           <div class="form-inline">
+                <h2>You want to delete &nbsp; {{ item }} &nbsp;?</h2>
+           </div>
+           <div class="form-inline mt-2" style="float: right;">
+
+            <form action="{% url 'delete_customer' item.id %}" method="post">
+                {% csrf_token %}
+
+                <input class="btn btn-outline-danger" type="submit" value="Delete">
+
+                </form>
+
+                <a href=" {% url 'allCustomers' %} ">
+                    <button class="button rounded ml-4">Cancel</button>
+                </a>
+           </div>
+       </div>
+   </div>
+
+{% endblock body %}

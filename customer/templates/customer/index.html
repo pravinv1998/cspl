@@ -1,0 +1,66 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %} Add Visits
+{% endblock title %}
+
+
+{% block body %}
+    <!-- <form action=" {% url 'index' %}  " method="post">
+        {% csrf_token %}
+        <ul>
+            {{ form }}
+        </ul>
+        <input type="submit" value="Save">
+   </form> -->
+
+
+    
+
+
+   
+
+
+        <div class="card mt-5 card-home">
+            <div class="card-header header-color">
+                 Customer Log Entry:
+                <div style="float: right;">
+                    <a href=" {% url 'addCustomer' %} ">
+                        <button class="button rounded">Add Customer</button>
+                    </a>
+                </div>
+
+            </div>
+
+            <form action="   " method="post">
+                {% csrf_token %}
+            <div class="card-body">
+                <div class="form-inline">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            Customer: <br><br>
+                            {{ form.customer }}
+                        </div>
+                        <div class="col-lg-3">
+                           Zone Status: <br><br>
+                            {{ form.zone_status }}
+                        </div>
+                        <div class="col-lg-3">
+                            Along With: <small>(Fellow Members)</small> <br><br>
+                            {{ form.along_with }}
+                        </div>
+                        <div class="col-lg-3">
+                            Naration: <br><br>
+                            {{ form.narration }}
+                        </div>
+                        
+                    </div>
+              
+                </div>
+            </div>
+            <div class="card-footer header-color">
+                <input class="details rounded" type="submit" value="Save">
+              
+            </div>
+        </div>
+   </form>
+{% endblock body %}

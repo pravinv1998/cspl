@@ -1,0 +1,94 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block title %} All Customers
+{% endblock title %}
+
+
+{% block body %}
+
+
+<div class="card  mt-3 header-color">
+    <div class="card-body">
+        <form action=" {% url 'allCustomers' %} " method="get">
+            <div class="form-inline">
+                <div class="mr-3">
+                    Name: <br>
+                    {{ custfilter.form.name }}
+                </div>
+                <div class="mr-3">
+                    Phone: <br>
+                    {{ custfilter.form.phone }}
+                </div>
+                <div class="mr-3">
+                    Address: <br>
+                    {{ custfilter.form.addr }}
+                </div>
+                <div class="mr-3">
+                    Date: <small>(mm/dd/yyyy)</small> <br>
+                    {{ custfilter.form.created_date }}
+                </div>
+                
+                <div class="mr-3">
+                     <br>
+                    <input type="submit" class='button rounded' value="Filter">
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    
+    <div class="card mt-3 mb-2 card-home">
+        <div class="card-header header-color">
+            <b>All Customers</b>: &nbsp;&nbsp; Total: &nbsp;{{ customer_count }}
+           
+            <a href="{% url 'export_users_csv' %}">
+                <button class="button rounded mr-2" style="float: right;"> Export All Customers </button>
+            </a>
+            <a href=" {% url 'addCustomer' %} ">
+                <button class="details rounded mr-3" style="float: right;"> Crate New Customer </button>
+            </a>
+        </div>
+        <div class="card-body card-home">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">CuID</th>
+                         {% comment %} <th scope="col">Image</th> {% endcomment %}
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th> 
+                        <th scope="col"> Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <th scope="row">{{ customer.id }}</th>
+                        {% comment %} <td>{{ customer.image.url }}</td> {% endcomment %}
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.addr }}</td>
+                        <td>{{ customer.created_date }}</td>
+                         <td> 
+                            <a href=" {% url 'customer' customer.id %}  ">
+                                <button class="details rounded btn-sm">Details</button>
+                            </a>
+                        </td>
+                         <td> 
+                            <a href=" {% url 'delete_customer' customer.id %}  ">
+                                <button class="delete rounded btn-sm">Delete</button>
+                            </a>
+                        </td>  
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>        
+    
+{% endblock body %}

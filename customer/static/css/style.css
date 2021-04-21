@@ -1,0 +1,88 @@
+a{
+    color: black;
+}
+
+body{
+    background-color: bisque;
+   
+}
+
+.card-home{
+    background-color: rgb(255, 233, 201);
+}
+
+.header-color{
+    background-color: #fac28e;
+}
+
+.button{
+    background-color: #ffffff;
+    /* Green */
+    border: none;
+    color: #ffa857;
+    padding: 8px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button-block {
+    background-color: hsl(27, 100%, 79%);
+    /* Green */
+    border: none;
+    color: #cc6300;
+    padding: 30px 52px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.details{
+    background-color: hsl(128, 94%, 38%);
+    /* Green */
+    border: none;
+    color: #ffffff;
+    padding: 8px 28px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 16px;
+}
+
+.filter-button{
+    background-color: hsl(128, 94%, 38%);
+    /* Green */
+    border: none;
+    color: #ffffff;
+    padding: 6px 18px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 16px;
+}
+
+.delete {
+    background-color: hsl(357, 100%, 53%);
+    /* Green */
+    border: none;
+    color: #ffffff;
+    padding: 8px 28px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+}
+
+.logout{
+     background-color: hsl(357, 100%, 53%);
+     /* Green */
+     border: none;
+     color: #ffffff;
+     padding: 8px 18px;
+     text-align: center;
+     text-decoration: none;
+
+     font-size: 16px;
+}

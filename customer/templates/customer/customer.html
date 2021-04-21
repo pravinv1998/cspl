@@ -1,0 +1,106 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block title %} {{customer.id }}
+{% endblock title %}
+
+
+{% block body %}
+{% comment %} {{myfilter.form}} {% endcomment %}
+
+   {% comment %} {% for visit in visits %}
+        {{ visit.zone_status }}
+        {{ visit.along_with }}
+        {{ visit.narration }}
+        {{ visit.created_date }}
+   {% endfor %} {% endcomment %}
+
+
+    <div class="row mt-3">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header header-color">
+                    Contact Information:
+                </div>
+                <div class="card-body card-home">
+                    <div>Name:&nbsp; {{ customer.name }}</div>
+                    <div>Email:&nbsp; {{ customer.email }}</div>
+                    <div>Phone No:&nbsp; {{ customer.phone }}</div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header header-color">
+                    Address:
+                </div>
+                <div class="card-body card-home">
+                    <div>Address:&nbsp; {{ customer.addr }}</div>
+                    <div>City:&nbsp; {{ customer.city }}</div>
+                    <div>State:&nbsp; {{ customer.state }}</div>
+            
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card card-home">
+                <div class="card-header header-color">
+                    Customer Total Visits:
+                </div>
+                <div class="card-body mt-3 card-home" style="text-align: center;">
+                    <div>
+                        <h1><b>{{ visits_count }}</b></h1>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+   <div class="card mt-3 card-home">
+        <div class="card-header header-color">
+            <div>
+                {{ customer.name }} &nbsp; Visits:
+            </div>
+            <div >
+                <form style="float: right;" action=" {% url 'customer' customer.id %} " method="get">
+                    {{ myfilter.form.created_date }}
+                    <input type="submit"  class=" btn-sm details rounded"  value="DateFilter">
+                </form>
+            </div>
+        </div>
+        
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">CuID</th>
+                        <th scope="col">Visit ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Zone</th>
+                        <th scope="col">Along With</th>
+                        <th scope="col">Naration</th>
+                        <th scope="col">Visit Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for visit in visits %}
+                    <tr>
+                        <th scope="row">{{ visit.customer.id }}</th>
+                        <td>{{ visit.id }}</td>
+                        <td>{{ visit.customer }}</td>
+                        <td>{{ visit.zone_status }}</td>
+                         <td>{{ visit.along_with }}</td>
+                        <td>{{ visit.narration }}</td>
+                        <td>{{ visit.created_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>              
+
+{% endblock body %}

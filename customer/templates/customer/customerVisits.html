@@ -1,0 +1,42 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}  Visits
+{% endblock title %}
+
+
+{% block body %}
+    
+    
+     <div class="card mt-5 card-home">
+        <div class="card-header">
+            All Customers:
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">CuID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Zone</th>
+                        <th scope="col">Along With</th>
+                        <th scope="col">Naration</th>
+                        <th scope="col">Visit Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for visit in visit %}
+                    <tr>
+                        <th scope="row">{{ visit.customer.id }}</th>
+                        <td>{{ visit.customer }}</td>
+                        <td>{{ visit.zone_status }}</td>
+                         <td>{{ visit.along_with }}</td>
+                        <td>{{ visit.narration }}</td>
+                        <td>{{ visit.created_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>              
+    
+{% endblock body %}

@@ -1,0 +1,77 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %} All Visits
+{% endblock title %}
+
+
+{% block body %}
+
+
+
+<div class="card  mt-3 header-color">
+    <div class="card-body header-color">
+        <form action=" {% url 'allVisits' %} " method="get">
+            <div class="form-inline">
+                <div class="mr-4">
+                    Customer: <br>
+                    {{ visitfilter.form.customer }}
+                </div>
+                <div class="mr-4">
+                    Zone Status: <br>
+                    {{ visitfilter.form.zone_status }}
+                </div>
+                <div class="mr-4">
+                    Naration: <br>
+                    {{ visitfilter.form.narration }}
+                </div>
+                <div class="mr-4">
+                    Date: <small>(mm/dd/yyyy)</small> <br>
+                    {{ visitfilter.form.created_date }}
+                </div>
+                <div class="mr-4">
+                    <br>
+                    <input type="submit" class='button rounded' value="Filter">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+    
+    
+     <div class="card mt-3 card-home">
+        <div class="card-header header-color">
+            All Visits:  &nbsp;&nbsp; Total:{{ visits_count }}
+        </div>
+        <div class="ckkard-body">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">CuID</th>
+                         <th scope="col">Visit ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Zone</th>
+                        <th scope="col">Along With</th>
+                        <th scope="col">Naration</th>
+                        <th scope="col">Visit Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for visit in visit %}
+                    <tr>
+                        <th scope="row">{{ visit.customer.id }}</th>
+                        <td>{{ visit.id }}</td>
+                        <td>{{ visit.customer }}</td>
+                        <td>{{ visit.zone_status }}</td>
+                         <td>{{ visit.along_with }}</td>
+                        <td>{{ visit.narration }}</td>
+                        <td>{{ visit.created_date }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>              
+    
+{% endblock body %}

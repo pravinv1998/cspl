@@ -1,0 +1,35 @@
+{% extends 'customer/layout.html' %}
+
+{% load static %}
+{% block title %} Home
+{% endblock title %}
+
+
+{% block body %}
+  
+    <div class="row mt-5">
+        <div class="card card-home">
+            <div class="col pt-2 pb-2">
+                <a href=" {% url 'index' %} ">
+                    <button class="button-block rounded ">Add Visits</button>
+                </a>
+                <a href=" {% url 'addCustomer' %} ">
+                    <button class="button-block rounded">Add Customers</button>
+                </a>
+                {% if request.user.is_superuser %}
+                <a href=" {% url 'allVisits' %} ">
+                    <button class="button-block rounded">All Visits</button>
+                </a>
+                <a href=" {% url 'allCustomers' %} ">
+                    <button class="button-block rounded">All Customers</button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <img src=" {% static 'images/1.jpg' %} " alt="Image 1">
+    </div>
+  
+{% endblock body %}
