@@ -75,12 +75,12 @@ def allVisits(request):
          'visits_count': visits_count,
     })
 
-# @login_required(login_url='login')
-# def customerVisits(request,pk):
-#     visit = Visits.objects.all().filter(id=pk)
-#     return render(request, 'customer/customerVisits.html',{
-#         'visit': visit,
-#     })
+@login_required(login_url='login')
+def customerVisits(request,pk):
+    visit = Visits.objects.all().filter(id=pk)
+    return render(request, 'customer/customerVisits.html',{
+        'visit': visit,
+    })
 
 
 def loginView(request):
